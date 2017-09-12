@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+   <body>
+    <center><title> root and interactive shell user </title>
+        <h3> root and interactive shell user user info </h3>
+      <table border = 1>
+         {% for key, value in result.iteritems() %}
+
+            <tr>
+                <td width="100"> {{ key }} </td>
+               <td width="100"> {{ value }} </td>
+            </tr>
+
+         {% endfor %}
+          <p><a href="/login"> Back </a></p>
+      </table>
+    </center>
+   </body>
+</html>
