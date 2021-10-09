@@ -21,3 +21,21 @@ def f(a):
 
 
 print(f(2))
+
+
+# Decorator with parameter
+
+def salute(msg):
+    def decorator(fun):
+        def wrapper(*args, **kwargs):
+            return msg + args[0]
+        return wrapper
+    return decorator
+    
+    
+@salute("HI, ")
+def greet(name):
+    print(name)
+    
+    
+print(greet("Amit")) #HI, Amit
