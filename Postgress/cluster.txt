@@ -1,1 +1,28 @@
 
+sudo su - postgres
+echo $PGDATA
+
+Creating a cluster data directory to a new location /postgres/data/instance2 
+Note : postgres is superuser
+  mkdir -p /postgres/data/instance2
+  initdb /postgres/data/instance2
+CONFIGURING Postgres CLUSTER
+ Modify below items:
+ #port = 5432   to 5433
+ #unix_socket_directories = '/var/run/postgresql' to /home/instance2
+STARTING Postgres SERVER
+ postgres -D /postgres/data/instance2
+ pg_ctl -D /postgres/data/instance2 -l logfile start
+Checking the new process on OS
+ ps xf
+
+Connecting to new cluster
+ psql -h localhost -p 5433 postgres
+Stop the server for a cluster
+ pg_ctl -D /postgres/data/instance2 -l /postgres/data/logfile stop
+Reload the cluster
+ pg_ctl -D /postgres/data/instance2 -l /postgres/data/logfile.log reload
+
+Note : # 
+mkdir -p /home/instance2
+chown postgres:postgres /home/instance2
